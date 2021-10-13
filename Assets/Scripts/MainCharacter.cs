@@ -13,6 +13,10 @@ public class MainCharacter : MonoBehaviour
     public bool canJump = true;
     float moveX = 1.0f;
 
+    public bool hasCover = true;
+    public bool isCovered = true;
+    public GameObject Cover;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +44,28 @@ public class MainCharacter : MonoBehaviour
 
     }
 
+    void CoverEnable() {
+
+        if (!Cover.GetComponent<SpriteRenderer>().enabled && !Cover.GetComponent<CircleCollider2D>().enabled) {
+
+            isCovered = false;
+        
+        }
+
+
+        if (hasCover) {
+            if (Input.GetKeyUp(KeyCode.Keypad0)) {
+
+                isCovered = true;
+                hasCover = false;
+                Cover.GetComponent<SpriteRenderer>().enabled = true;
+                Cover.GetComponent<CircleCollider2D>().enabled = true;
+
+            }
+        }
+    }
+
+
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
@@ -59,5 +85,6 @@ public class MainCharacter : MonoBehaviour
     void Update()
     {
         PlayerControls();
+        CoverEnable();
     }
 }
