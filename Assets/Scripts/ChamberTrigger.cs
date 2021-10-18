@@ -21,7 +21,7 @@ public class ChamberTrigger : MonoBehaviour
     {
         Text.SetActive(false);
         Ghost.GetComponent<SpriteRenderer>().enabled = true;
-        Ghost.GetComponent<CircleCollider2D>().enabled = true;
+        Ghost.GetComponent<BoxCollider2D>().enabled = true;
         Player.GetComponent<Flying>().toChamber = true;
     }
 }
