@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TreasureScene.unity
     guid: 8026f7e618bd8484980e85be69cb899c
   - enabled: 1
+    path: Assets/Scenes/FilmScene.unity
+    guid: 33503c8686f55c848a3e1d9e0057802e
+  - enabled: 1
     path: Assets/Scenes/DeathScene.unity
     guid: cd8e11be22a5bd042bd22af4694995ef
   - enabled: 1

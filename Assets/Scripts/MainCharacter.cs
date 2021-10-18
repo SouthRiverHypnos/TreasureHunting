@@ -14,7 +14,7 @@ public class MainCharacter : MonoBehaviour
     float moveX = 1.0f;
 
     public bool hasCover = true;
-    public bool isCovered = true;
+    public bool isCovered = false;
     public GameObject Cover;
 
     private void Awake()
