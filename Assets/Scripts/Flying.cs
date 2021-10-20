@@ -36,12 +36,14 @@ public class Flying : MonoBehaviour
     public bool preSelection = false;
     public bool selection = false;
 
-
+    public Animator animator;
 
     void Start()
     {
         respondText.SetActive(false);
         GhostText3.SetActive(false);
+
+        animator = GetComponent<Animator>();
     }
 
     void Fly() {
@@ -60,6 +62,7 @@ public class Flying : MonoBehaviour
         }
 
         moveX = Input.GetAxis("Horizontal");
+        animator.SetFloat("MoveX", moveX);
     }
 
     private void FixedUpdate()
@@ -144,11 +147,13 @@ public class Flying : MonoBehaviour
         if (canFly)
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
+            animator.SetBool("isFly", true);
             Fly();
         }
 
         if (simpleMove) {
             PlayerControls();
+            animator.SetBool("isFly", false);
         }
 
         if (respond) {

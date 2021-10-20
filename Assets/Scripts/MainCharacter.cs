@@ -17,6 +17,8 @@ public class MainCharacter : MonoBehaviour
     public bool isCovered = false;
     public GameObject Cover;
 
+    public Animator animator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +33,8 @@ public class MainCharacter : MonoBehaviour
         }
 
         moveX = Input.GetAxis("Horizontal");
+        animator.SetFloat("MoveX", moveX);
+
     }
 
     void Jump(){
