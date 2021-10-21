@@ -44,6 +44,7 @@ public class Flying : MonoBehaviour
         GhostText3.SetActive(false);
 
         animator = GetComponent<Animator>();
+        animator.SetBool("isFly", true);
     }
 
     void Fly() {

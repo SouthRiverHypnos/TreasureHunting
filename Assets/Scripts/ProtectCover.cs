@@ -33,4 +33,14 @@ public class ProtectCover : MonoBehaviour
 
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Pillar")) {
+            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+
+        }
+    }
 }

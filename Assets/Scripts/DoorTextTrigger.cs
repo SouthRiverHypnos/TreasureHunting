@@ -23,8 +23,10 @@ public class DoorTextTrigger : MonoBehaviour
         }
         if (Player.GetComponent<Flying>().withBook) {
             Text2.SetActive(true);
-            Door.GetComponent<SpriteRenderer>().enabled = false;
-            Door.GetComponent<BoxCollider2D>().enabled = false;
+            if (Input.GetKeyUp(KeyCode.Q)) {
+                Door.GetComponent<SpriteRenderer>().enabled = false;
+                Door.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
 

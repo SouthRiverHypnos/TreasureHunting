@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8468344779995752565}
   - component: {fileID: 3449491874946238248}
+  - component: {fileID: 3618368790960682774}
   - component: {fileID: 6434151963164783072}
   - component: {fileID: 2151127030570469446}
   - component: {fileID: 3835170853999019619}
   - component: {fileID: 8256111555812252773}
   m_Layer: 0
   m_Name: Pillar 1
-  m_TagString: Untagged
+  m_TagString: Pillar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,6 +87,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3618368790960682774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126493494106928427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa64a11cc63e1941a22a23fff0cf0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &6434151963164783072
 BoxCollider2D:
   m_ObjectHideFlags: 0
