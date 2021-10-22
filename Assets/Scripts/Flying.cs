@@ -25,26 +25,23 @@ public class Flying : MonoBehaviour
 
     public bool withBook = false;
     public bool toChamber = false;
-    public bool respond = false;
+    public bool end = false;
 
-    public float respondTimer = 0;
-    public GameObject GhostText2;
-    public GameObject respondText;
-    public GameObject GhostText3;
-
-    public bool beginRespond = false;
-    public bool preSelection = false;
-    public bool selection = false;
+    public float deathTimer = 0;
+    public bool deathReady = false;
 
     public Animator animator;
 
+    public GameObject beginText;
+    public GameObject GhostText;
+
     void Start()
     {
-        respondText.SetActive(false);
-        GhostText3.SetActive(false);
-
         animator = GetComponent<Animator>();
         animator.SetBool("isFly", true);
+
+        beginText.GetComponent<SpriteRenderer>().enabled = true;
+        beginText.GetComponent<Animator>().enabled = true;
     }
 
     void Fly() {
@@ -133,10 +130,12 @@ public class Flying : MonoBehaviour
         if (begintimer)
         {
             timer += Time.deltaTime;
-            if (timer > 3)
+            if (timer > 4)
             {
                 canFly = true;
                 begintimer = false;
+                beginText.GetComponent<Animator>().enabled = false;
+                beginText.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
         
@@ -157,34 +156,32 @@ public class Flying : MonoBehaviour
             animator.SetBool("isFly", false);
         }
 
-        if (respond) {
-            simpleMove = false;
-            if(beginRespond){
-                if (Input.GetKeyUp(KeyCode.Return))
-                {
-                    GhostText2.SetActive(false);
-                    respondText.SetActive(true);
-                    preSelection = true;
-                }
+        if (end) {
+            Debug.Log("End");
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SceneManager.LoadScene(4);
             }
-            if (preSelection) {
-                if(Input.GetKeyDown(KeyCode.Return)) {
-                    beginRespond = false;
-                    respondText.SetActive(false);
-                    GhostText3.SetActive(true);
-                    selection = true;
-                }
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                GhostText.GetComponent<GhostTextTrigger>().Text2.GetComponent<Animator>().enabled = false;
+                GhostText.GetComponent<GhostTextTrigger>().Text2.GetComponent<SpriteRenderer>().enabled = false;
+                GhostText.GetComponent<GhostTextTrigger>().Text3.GetComponent<SpriteRenderer>().enabled = true;
+                GhostText.GetComponent<GhostTextTrigger>().Text3.GetComponent<Animator>().enabled = true;
+                deathReady = true;
+            }
+
+            if (deathReady) {
+                deathTimer += Time.deltaTime;
             }
         }
 
-        if (selection) {
-            if (Input.GetKeyUp(KeyCode.G)) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            if (Input.GetKeyUp(KeyCode.P))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-            }
+        if (deathTimer > 3)
+        {
+            SceneManager.LoadScene(3);
         }
+
+
     }
-}
+       
+    }

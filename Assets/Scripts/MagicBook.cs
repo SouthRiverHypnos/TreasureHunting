@@ -9,12 +9,14 @@ public class MagicBook : MonoBehaviour
 
     private void Start()
     {
-        Text.SetActive(false);
+        Text.GetComponent<SpriteRenderer>().enabled = false;
+        Text.GetComponent<Animator>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Text.SetActive(true);
+        Text.GetComponent<SpriteRenderer>().enabled = true;
+        Text.GetComponent<Animator>().enabled = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -22,6 +24,7 @@ public class MagicBook : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
         Player.GetComponent<Flying>().withBook = true;
-        Text.SetActive(false);
+        Text.GetComponent<SpriteRenderer>().enabled = false;
+        Text.GetComponent<Animator>().enabled = false;
     }
 }

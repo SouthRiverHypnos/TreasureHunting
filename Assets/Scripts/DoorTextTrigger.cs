@@ -8,24 +8,26 @@ public class DoorTextTrigger : MonoBehaviour
     public GameObject Text2;
     public GameObject Player;
     public GameObject Door;
+    public bool canOpen = false;
 
     private void Start()
     {
-        Text1.SetActive(false);
-        Text2.SetActive(false);
+        Text1.GetComponent<SpriteRenderer>().enabled = false;
+        Text2.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!Player.GetComponent<Flying>().withBook)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Text1.SetActive(true);
-        }
-        if (Player.GetComponent<Flying>().withBook) {
-            Text2.SetActive(true);
-            if (Input.GetKeyUp(KeyCode.Q)) {
-                Door.GetComponent<SpriteRenderer>().enabled = false;
-                Door.GetComponent<BoxCollider2D>().enabled = false;
+            if (!Player.GetComponent<Flying>().withBook)
+            {
+                Text1.GetComponent<SpriteRenderer>().enabled = true ;
+            }
+            if (Player.GetComponent<Flying>().withBook)
+            {
+                Text2.GetComponent<SpriteRenderer>().enabled = true;
+                canOpen = true;
             }
         }
     }
@@ -35,11 +37,23 @@ public class DoorTextTrigger : MonoBehaviour
 
         if (!Player.GetComponent<Flying>().withBook)
         {
-            Text1.SetActive(false);
+            Text1.GetComponent<SpriteRenderer>().enabled = false;
         }
         if (Player.GetComponent<Flying>().withBook)
         {
-            Text2.SetActive(false);
+            Text2.GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (canOpen) {
+
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                Door.GetComponent<SpriteRenderer>().enabled = false;
+                Door.GetComponent<BoxCollider2D>().enabled = false;
+            }
+
         }
     }
 }

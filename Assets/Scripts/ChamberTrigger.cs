@@ -9,17 +9,20 @@ public class ChamberTrigger : MonoBehaviour
     public GameObject Player;
     void Start()
     {
-        Text.SetActive(false);
+        Text.GetComponent<SpriteRenderer>().enabled = false;
+        Text.GetComponent<Animator>().enabled = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Text.SetActive(true);
+        Text.GetComponent<SpriteRenderer>().enabled = true;
+        Text.GetComponent<Animator>().enabled = true;
     }
    
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Text.SetActive(false);
+        Text.GetComponent<SpriteRenderer>().enabled = false;
+        Text.GetComponent<Animator>().enabled = false;
         Ghost.GetComponent<SpriteRenderer>().enabled = true;
         Ghost.GetComponent<BoxCollider2D>().enabled = true;
         Player.GetComponent<Flying>().toChamber = true;
