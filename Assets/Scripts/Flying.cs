@@ -33,7 +33,9 @@ public class Flying : MonoBehaviour
     public Animator animator;
 
     public GameObject beginText;
+    public GameObject InstrText;
     public GameObject GhostText;
+
 
     void Start()
     {
@@ -134,6 +136,7 @@ public class Flying : MonoBehaviour
             {
                 canFly = true;
                 begintimer = false;
+                InstrText.SetActive(true);
                 beginText.GetComponent<Animator>().enabled = false;
                 beginText.GetComponent<SpriteRenderer>().enabled = false;
             }
