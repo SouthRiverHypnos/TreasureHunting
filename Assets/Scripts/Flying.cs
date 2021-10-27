@@ -191,7 +191,7 @@ public class Flying : MonoBehaviour
 
         if (deathTimer > 3)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(5);
         }
 
 
