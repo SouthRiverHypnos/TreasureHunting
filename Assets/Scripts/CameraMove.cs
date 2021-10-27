@@ -11,4 +11,12 @@ public class CameraMove : MonoBehaviour
     {
         transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
     }
+
+    private void Update()
+    {
+        if (transform.position.y >= 3)
+        {
+            transform.position = new Vector3(transform.position.x, 3, transform.position.z);
+        }
+    }
 }

@@ -13,8 +13,7 @@ public class Entrance : MonoBehaviour
     {
         if (collision.CompareTag("Player")){
 
-            if (animator.GetBool("Open")) {
-
+            if (animator.GetBool("Open")) {                
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         

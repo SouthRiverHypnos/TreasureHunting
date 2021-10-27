@@ -26,6 +26,7 @@ public class DoorTextTrigger : MonoBehaviour
             }
             if (Player.GetComponent<Flying>().withBook)
             {
+                Player.GetComponent<AudioSource>().Play();
                 Text2.GetComponent<SpriteRenderer>().enabled = true;
                 canOpen = true;
             }

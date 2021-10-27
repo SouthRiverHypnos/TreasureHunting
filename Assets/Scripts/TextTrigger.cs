@@ -6,22 +6,28 @@ public class TextTrigger : MonoBehaviour
 {
 
     public GameObject Text;
+    public GameObject Player;
 
 
     void Start()
     {
-        Text.SetActive(false);
+        Text.GetComponent<SpriteRenderer>().enabled = false;
+        Text.GetComponent<Animator>().enabled = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Object that entered the trigger : " + other);
-        Text.SetActive(true);
+        Text.GetComponent<SpriteRenderer>().enabled = true;
+        Text.GetComponent<Animator>().enabled = true;
+        Player.GetComponent<AudioSource>().Play();
+
     }
 
     void OnTriggerExit2D(Collider2D Other)
     {
-        Text.SetActive(false);
+        Text.GetComponent<SpriteRenderer>().enabled = false;
+        Text.GetComponent<Animator>().enabled = false;
     }
 
 }

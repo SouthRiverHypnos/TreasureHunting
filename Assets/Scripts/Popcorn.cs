@@ -23,6 +23,7 @@ public class Popcorn : MonoBehaviour
             {
                 GetComponent<SpriteRenderer>().enabled = false;
                 ScoreManager.points += 1;
+                GetComponent<AudioSource>().Play();
             }
         
         }

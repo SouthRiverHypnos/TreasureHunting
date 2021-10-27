@@ -43,6 +43,8 @@ public class GoldenSnitch : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) {
             GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Animator>().enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 }

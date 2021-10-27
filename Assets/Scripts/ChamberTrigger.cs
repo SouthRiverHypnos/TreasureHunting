@@ -15,6 +15,7 @@ public class ChamberTrigger : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Player.GetComponent<AudioSource>().Play();
         Text.GetComponent<SpriteRenderer>().enabled = true;
         Text.GetComponent<Animator>().enabled = true;
     }

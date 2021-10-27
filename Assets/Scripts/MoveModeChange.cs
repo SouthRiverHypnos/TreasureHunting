@@ -9,8 +9,8 @@ public class MoveModeChange : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) {
             Debug.Log("Change Mode");
             collision.gameObject.GetComponent<Flying>().InstrText.SetActive(false);
-            collision.gameObject.GetComponent<Flying>().canFly = false;
             collision.gameObject.GetComponent<Flying>().simpleMove = true;
+            collision.gameObject.GetComponent<Flying>().canFly = false;            
         }
     }
 }

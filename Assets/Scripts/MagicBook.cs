@@ -17,6 +17,7 @@ public class MagicBook : MonoBehaviour
     {
         Text.GetComponent<SpriteRenderer>().enabled = true;
         Text.GetComponent<Animator>().enabled = true;
+        Player.GetComponent<AudioSource>().Play();
     }
 
     private void OnTriggerExit2D(Collider2D collision)

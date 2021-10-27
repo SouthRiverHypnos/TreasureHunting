@@ -35,6 +35,8 @@ public class Flying : MonoBehaviour
     public GameObject beginText;
     public GameObject InstrText;
     public GameObject GhostText;
+    public GameObject BGM;
+    public GameObject BGMChamber;
 
 
     void Start()
@@ -152,6 +154,14 @@ public class Flying : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Dynamic;
             animator.SetBool("isFly", true);
             Fly();
+        }
+
+        if (transform.position.x >= 50.47368) {
+            simpleMove = true;
+            canFly = false;
+            InstrText.SetActive(false);
+            BGM.GetComponent<AudioSource>().Stop();
+            
         }
 
         if (simpleMove) {
